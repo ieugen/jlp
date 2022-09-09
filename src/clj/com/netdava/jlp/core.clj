@@ -11,7 +11,9 @@
 
     ;; Routes
     [com.netdava.jlp.web.routes.api]
-    )
+    
+    [com.netdava.jlp.web.routes.pages] 
+    [com.netdava.jlp.web.routes.ui])
   (:gen-class))
 
 ;; log uncaught exceptions in threads

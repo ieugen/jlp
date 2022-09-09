@@ -43,4 +43,14 @@
 
 (comment
   (go)
-  (reset))
+  (reset)
+  
+  
+  (kit/sync-modules)
+
+  (kit/list-modules)
+
+  (kit/install-module :kit/html) 
+  (kit/install-module :kit/htmx)
+  
+  )
