@@ -1,17 +1,19 @@
 (ns user
   "Userspace functions you can run by default in your local REPL."
-  (:require
-    [clojure.pprint]
-    [clojure.spec.alpha :as s]
-    [clojure.tools.namespace.repl :as repl]
-    [criterium.core :as c]                                  ;; benchmarking
-    [expound.alpha :as expound]
-    [integrant.core :as ig]
-    [integrant.repl :refer [clear go halt prep init reset reset-all]]
-    [integrant.repl.state :as state]
-    [kit.api :as kit]
-    [lambdaisland.classpath.watch-deps :as watch-deps]      ;; hot loading for deps
-    [com.netdava.jlp.core :refer [start-app]]))
+  (:require [clojure.pprint]
+            [clojure.spec.alpha :as s]
+            [clojure.tools.namespace.repl :as repl]
+            [criterium.core :as c]                                  ;; benchmarking
+            [expound.alpha :as expound]
+            [hyperfiddle.rcf]
+            [integrant.core :as ig]
+            [integrant.repl :refer [clear go halt prep init reset reset-all]]
+            [integrant.repl.state :as state]
+            [kit.api :as kit]
+            [lambdaisland.classpath.watch-deps :as watch-deps]      ;; hot loading for deps
+            [com.netdava.jlp.core :refer [start-app]]))
+
+(hyperfiddle.rcf/enable!)
 
 ;; uncomment to enable hot loading for deps
 (watch-deps/start! {:aliases [:dev :test]})

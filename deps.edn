@@ -2,6 +2,7 @@
            "resources"]
 
  :deps    {org.clojure/clojure {:mvn/version "1.11.1"}
+           com.hyperfiddle/rcf {:mvn/version "20220902-130636"}
 
            ;; Routing
            metosin/reitit {:mvn/version "0.5.18"}
@@ -41,12 +42,11 @@
                                 ring/ring-mock                  {:mvn/version "0.4.0"}
                                 io.github.kit-clj/kit-generator {:mvn/version "0.1.5"}
                                 org.clojure/tools.namespace     {:mvn/version "1.2.0"}}
-                  :extra-paths ["env/dev/clj" "env/dev/resources" "test/clj"]
-                  :main-opts   []}
-           :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "0.9.0"}}
+                  :extra-paths ["env/dev/clj" "env/dev/resources" "test/clj"]}
+           :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "1.0.0"}}
                    :main-opts  ["-m" "nrepl.cmdline" "-i"]}
-           :cider {:extra-deps {nrepl/nrepl       {:mvn/version "0.9.0"}
-                                cider/cider-nrepl {:mvn/version "0.28.3"}}
+           :cider {:extra-deps {nrepl/nrepl       {:mvn/version "1.0.0"}
+                                cider/cider-nrepl {:mvn/version "0.28.5"}}
                    :main-opts  ["-m" "nrepl.cmdline" "--middleware" "[cider.nrepl/cider-middleware]" "-i"]}
 
            :test {:extra-deps  {criterium/criterium                  {:mvn/version "0.4.6"}
@@ -60,6 +60,7 @@
                                 io.github.kit-clj/kit-generator      {:mvn/version "0.1.5"}
                                 org.clojure/tools.namespace          {:mvn/version "1.2.0"}
                                 com.lambdaisland/classpath           {:mvn/version "0.0.27"}}
+                  :jvm-opts ["-Dhyperfiddle.rcf.generate-tests=true"]
                   :exect-fn    cognitect.test-runner.api/test
                   :extra-paths ["env/dev/clj" "env/dev/resources" "env/test/resources" "test/clj"]
                   :main-opts   ["-e" "(require 'pjstadig.humane-test-output) (pjstadig.humane-test-output/activate!)"

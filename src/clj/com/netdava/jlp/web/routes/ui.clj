@@ -3,9 +3,17 @@
    [com.netdava.jlp.web.middleware.exception :as exception]
    [com.netdava.jlp.web.routes.utils :as utils]
    [com.netdava.jlp.web.htmx :refer [ui page] :as htmx]
+   [hyperfiddle.rcf :refer [tests]]
    [integrant.core :as ig]
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring.middleware.parameters :as parameters]))
+
+(tests
+ ;; demo test
+ (+ 1 1) := 2
+
+ 0)
+
 
 (defn home [request]
   (let [{:keys [uri]} request

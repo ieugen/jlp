@@ -1,11 +1,10 @@
 (ns com.netdava.jlp.web.routes.pages
-  (:require
-    [com.netdava.jlp.web.middleware.exception :as exception]
-    [com.netdava.jlp.web.pages.layout :as layout]
-    [integrant.core :as ig]
-    [reitit.ring.middleware.muuntaja :as muuntaja]
-    [reitit.ring.middleware.parameters :as parameters]
-    [ring.middleware.anti-forgery :refer [wrap-anti-forgery]]))
+  (:require [com.netdava.jlp.web.middleware.exception :as exception]
+            [com.netdava.jlp.web.pages.layout :as layout]
+            [integrant.core :as ig]
+            [reitit.ring.middleware.muuntaja :as muuntaja]
+            [reitit.ring.middleware.parameters :as parameters]
+            [ring.middleware.anti-forgery :refer [wrap-anti-forgery]]))
 
 (defn wrap-page-defaults []
   (let [error-page (layout/error-page
