@@ -45,5 +45,14 @@
  {:routes #ig/ref :router/routes}
  :reitit.routes/pages {:base-path "",
                        :env #ig/ref :system/env}
- :reitit.routes/ui {:base-path "",
-                    :env #ig/ref :system/env}}
+ :reitit.routes/ui {:base-path "/htmx-clicked",
+                    :env #ig/ref :system/env}
+ :db.sql/query-fn {:conn #ig/ref :db.sql/connection,
+                   :options {},
+                   :filename "sql/queries.sql"}
+ :db.sql/migrations {:store :database,
+                     :db {:datasource #ig/ref :db.sql/connection},
+                     :migrate-on-init? true}
+ :db.sql/connection #profile {:dev {:jdbc-url "jdbc:postgresql://localhost:25432/joblink_dev?user=joblink&password=joblink"},
+                              :test {:jdbc-url "jdbc:postgresql://localhost:25432/joblink_test?user=joblink&password=joblink"},
+                              :prod {:jdbc-url #env JDBC_URL}}}

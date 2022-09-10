@@ -1,0 +1,1 @@
+create database joblink_keycloak with owner joblink;

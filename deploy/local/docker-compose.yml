@@ -1,0 +1,36 @@
+services:
+
+  postgres:
+    image: postgres:14
+    container_name: jlp_postgres
+    restart: unless-stopped
+    ports:
+      - "25432:5432"
+    environment:
+      POSTGRES_DB: ${JOBLINK_POSTGRES_DB}
+      POSTGRES_USER: ${JOBLINK_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${JOBLINK_POSTGRES_PASSWORD}
+    volumes:
+      - joblink_db:/var/lib/postgresql/data
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+  keycloak:
+    image:  quay.io/keycloak/keycloak:${KEYCLOAK_VERSION}
+    container_name: jlp_keycloak
+    command: start-dev
+    depends_on:
+      - postgres
+    environment:
+      DB_VENDOR: postgres
+      DB_ADDR: postgres
+      DB_DATABASE: ${KEYCLOAK_POSTGRESQL_DB}
+      DB_USER: ${KEYCLOAK_POSTGRESQL_USER}
+      DB_PASSWORD: ${KEYCLOAK_POSTGRESQL_PASS}
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+    ports:
+      - "28080:8080"
+    restart: unless-stopped
+
+
+volumes:
+  joblink_db:

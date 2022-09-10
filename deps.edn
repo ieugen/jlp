@@ -21,7 +21,10 @@
  io.github.kit-clj/kit-undertow {:mvn/version "1.0.2"}
  selmer/selmer {:mvn/version "1.12.50"}
  luminus/ring-ttl-session {:mvn/version "0.3.3"}
- hiccup/hiccup {:mvn/version "1.0.5"}}
+ hiccup/hiccup {:mvn/version "1.0.5"}
+ io.github.kit-clj/kit-sql-conman {:mvn/version "1.0.3"}
+ io.github.kit-clj/kit-sql-migratus {:mvn/version "1.0.1"}
+ org.postgresql/postgresql {:mvn/version "42.3.4"}}
  :aliases {:build {:deps {io.github.clojure/tools.build {:git/sha "e3e3532"
                                                          :git/tag "v0.8.0" :git/url "https://github.com/clojure/tools.build.git"}
                           slipset/deps-deploy {:mvn/version "0.2.0"}

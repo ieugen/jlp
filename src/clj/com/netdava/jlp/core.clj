@@ -13,7 +13,9 @@
     [com.netdava.jlp.web.routes.api]
     
     [com.netdava.jlp.web.routes.pages] 
-    [com.netdava.jlp.web.routes.ui])
+    [com.netdava.jlp.web.routes.ui] 
+    [kit.edge.db.sql.conman] 
+    [kit.edge.db.sql.migratus])
   (:gen-class))
 
 ;; log uncaught exceptions in threads
