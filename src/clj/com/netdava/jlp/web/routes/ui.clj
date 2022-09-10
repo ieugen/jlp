@@ -9,7 +9,7 @@
 
 (defn home [request]
   (let [{:keys [uri]} request
-        clicked-path (str uri "/clicked")]
+        clicked-path (str uri "clicked")]
     (page
      [:head
       [:meta {:charset "UTF-8"}]
@@ -26,8 +26,7 @@
 
 ;; Routes
 (defn ui-routes [_opts]
-  [["" {:get home}]
-   ["/" {:get home}]
+  [["/" {:get home}]
    ["/clicked" {:post clicked}]])
 
 (defn route-data [opts]
