@@ -14,3 +14,5 @@ log/
 .clj-kondo/.cache/
 .calva/output-window/
 .lsp/.cache/
+!modules/install-log.edn
+modules/
