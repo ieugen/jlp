@@ -2,6 +2,7 @@
   (:require
    [com.netdava.jlp.web.middleware.core :as middleware]
    [integrant.core :as ig]
+   [ring.util.http-response :as http-response]
    [reitit.ring :as ring]
    [reitit.swagger-ui :as swagger-ui]))
 
@@ -19,11 +20,14 @@
                                              :url  (str api-path "/swagger.json")}))
     (ring/create-default-handler
      {:not-found
-      (constantly {:status 404, :body "Page not found"})
+      (constantly (-> {:status 404, :body "<p>Page not found</p>"}
+                      (http-response/content-type "text/html")))
       :method-not-allowed
-      (constantly {:status 405, :body "Not allowed"})
+      (constantly (-> {:status 405, :body "Not allowed"}
+                      (http-response/content-type "text/html")))
       :not-acceptable
-      (constantly {:status 406, :body "Not acceptable"})}))
+      (constantly (-> {:status 406, :body "Not acceptable"}
+                      (http-response/content-type "text/html")))}))
    {:middleware [(middleware/wrap-base opts)]}))
 
 (defmethod ig/init-key :router/routes
